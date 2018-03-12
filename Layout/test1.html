@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="test.css" />
+	<title>no title</title>
+	<style>
+		#container{
+			width: 100%;
+			overflow: auto;
+		}
+		
+		#left-nav{
+			width: 20%;
+			height: 300px;
+			background-color: #ccc;
+			float: left;
+		}
+		
+		#main{
+			width: 60%;
+			height: 500px;
+			background-color: #cb0;
+			float: left;
+		}
+		
+		#right-nav{
+			width: 20%;
+			height: 300px;
+			background-color: #348;
+			float: right;
+		}
+	</style>
+</head>
+<body>
+	<!-- type 1 useful, but the main part is loaded after the left-nav part -->
+	<div id="container">
+		<div id="left-nav">left-nav</div>
+		<div id="main">main</div>
+		<div id="right-nav">right-nav</div>
+	</div>
+</body>
+</html>

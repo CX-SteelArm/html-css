@@ -1,0 +1,159 @@
+/* general style */
+body{
+    /* for ie and moz */
+    background: #f1efe8 url(../img/bg-dark.jpg) repeat-x;
+    /* for safari */
+    background: url() repeat-x top center, url() repeat-x 239px left;
+    background-color: #f1efe8;
+    /* font-size/height */
+    font: 12px/18px "Lucida Grande", "Lucida Sans Unicode", Arial, sans-serif;
+    color: #36332a;
+}
+
+a:link, a:active, a:visited{
+    text-decoration: none;
+    color: #af670a;
+}
+
+a:hover{
+    color: #227115;
+}
+
+a:img{
+    border: none;
+}
+
+legend{
+    display: none;
+}
+
+img{
+    display: block;
+}
+
+/* this is the wrapper of all elements */
+#content-wrapper{
+    position: relative;
+    margin: 0 auto;
+    width: 1070px;
+}
+
+/* a grid to supervise the website */
+#grid{
+    position: absolute;
+    top: -20px;
+    left: -10px;
+    width: 1090px;
+    z-index: 9999;
+}
+
+/* font-face */
+@font-face{
+    font-family: "Museo Sans X";
+    src: url(../fonts/MuseoSans_500.otf);
+}
+
+#header ul a, #header h2, #home h3, #home h4, #main-viedo h3{
+    font-family: "Museo Sans X", "Lucida Grande", Arial, sans-serif;
+}
+
+/* Header */
+/* the top nav */
+#header ul{
+    margin: 20px 25px 63px;
+}
+
+#header li{
+    float: left;
+}
+
+#header li a{
+    float: left;
+    margin-right: 25px;
+    padding: 0 0 3px;
+    color: rgb(207, 164, 170);
+    font-size: 11px;
+    text-transform: uppercase;
+}
+
+#header ul a:hover{
+    padding-bottom: 2px;
+    border-bottom: 1px solid #423b2b;
+}
+
+#header ul a em{
+    font-style: normal;
+    color: #7f7159;
+}
+
+/* logo and title */
+#header h1{
+    float: left;
+    margin-left: 25px;
+    width: 266px;
+}
+
+/* if you want a logo img */
+#header h1 a{
+    display: block;
+    width: 266px;
+    height: 27px;
+    text-indent: -9999px;
+    background: url(../img/logo.png) no-repeat;
+}
+
+#header h2{
+    float: left;
+    margin-left: 15px;
+    width: 475px;
+    padding-top: 12px;
+    color: #7f7159;
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+/* search go */
+#header form{
+    float: right;
+    margin-right: 25px;
+    text-align: right;
+    width: 249px;
+}
+
+#header form label{
+    position: absolute;
+    left: -9999px;
+}
+
+#header form input[type="text"]{
+    /* 1. position 2. box-size 3. w/h 4. font&text 5. othes */
+    /* turn to block is easy to format */
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 6px 0 0 28px;
+    border: 0;
+    width: 180px;
+    /* inline to block: the height turn to new height+padding, perhaps also plus border */
+    height: 26px;
+    color: #333;
+    background: url(../img/search-bg.gif) no-repeat;
+}
+
+#header form input[type="image"]{
+    display: block;
+    float: left;
+}
+
+/* to clear fix, useful */
+.clearfix:after{
+    content: ".";
+    clear: both;
+    height: 0;
+    visibility: hidden;
+    display: block;
+}
+
+.clearfix{display: inline-block;}
+
+.clearfix{display: block;}
