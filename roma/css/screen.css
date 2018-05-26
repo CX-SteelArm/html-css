@@ -19,7 +19,7 @@ a:hover{
     color: #227115;
 }
 
-a:img{
+a img{
     border: none;
 }
 
@@ -143,6 +143,271 @@ img{
 #header form input[type="image"]{
     display: block;
     float: left;
+}
+
+/* main content */
+#main{
+    float: left;
+    margin: 36px 10px 40px 0;
+    width: 710px;
+}
+
+#main h3{
+    color: #227115;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+#main-featurette{
+    min-height: 190px;
+    font-size: 11px;
+    line-height: 13px;
+    /* for moz and ms */
+    background: #f1efe8 url() no-repeat left 21px;
+    /* for safari */
+    background: url() no-repeat left 21px, url() no-repeat;
+    background-color: #f1efe8;
+}
+
+#main-featurette h4{
+    margin-top: 14px;
+    color: #af670a;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+#main-featurette p{
+    margin-top: 6px;
+}
+
+#main-featurette ul{
+    margin-top: 10px;
+}
+
+#main-featurette li{
+    float: left;
+}
+
+#main-featurette li a{
+    margin-right: 15px;
+    padding-right: 8px;
+    font-weight: bold;
+    background: url(../img/arrow-orange.png) no-repeat right center;
+}
+
+#featurette1{
+    position: relative;
+    float: left;
+    margin: 23px 0 0 25px;
+    padding-left: 135px;
+    width: 175px;
+}
+
+#featurette1 p{
+    text-indent: -.3em;/* hanging punctuation */
+}
+
+#featurette1 img{
+    position: absolute;
+    top: -10px;
+    left: -5px;
+}
+
+#featurette2{
+    position: relative;
+    float: left;
+    margin: 23px 0 0 39px;
+    padding-left: 108px;
+    width: 202px;
+}
+
+#featurette2 img{
+    position: absolute;
+    top: 10px;
+    left: -10px;
+}
+
+#video h3, #interactive h3{
+    margin-bottom: 24px;
+}
+
+#video{
+    float: left;
+    margin-left: 25px;
+    width: 310px;
+}
+
+#interactive{
+    float: left;
+    margin-left: 37px;
+    width: 310px;
+}
+
+#popular{
+    clear: left;
+    float: left;
+    margin: 45px 0 0 25px;
+    width: 310px;
+}
+
+#popular ul{
+    float: left;
+    width: 50%;
+    margin-top: 13px;
+    font-size: 11px;
+    color: #36332a;
+}
+
+#popular li{
+    padding: 2px 0;
+}
+
+#popular a:link, #popular a:active, #popular a:visited{
+    color: #36332a;
+}
+
+#popular a:hover{
+    color: #227115;
+}
+
+#popular a strong{
+    padding-right: 8px;
+    background: url(../img/arrow-orange.png) no-repeat right center;
+}
+
+#voices{
+    float: left;
+    margin: 45px 0 0 37px;
+    width: 310px;
+}
+
+/* secondary content */
+#secondary{
+    float: left;
+    margin-top: 36px;
+    width: 350px;
+}
+
+#secondary-feature{
+    position: relative;
+    height: 320px;
+    background: #c27e28 url(../img/feature-orange.jpg) no-repeat;
+}
+
+#secondary-feature p{
+    position: absolute;
+    top: 60px;
+    left: 36px;
+    width: 278px;
+    height: 158px;
+    text-indent: -9999px;
+    background: url(../img/quote-colossus.png) no-repeat;
+}
+
+#secondary-featurette{
+    margin-top: 21px;
+    padding: 15px 27px 0 27px;
+    height: 104px;
+    font-size: 11px;
+    background: url() no-repeat;
+}
+
+#secondary-featurette h4{
+    color: #af670a;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+#secondary-featurette form{
+    margin-top: 10px;
+}
+
+#secondary-featurette form label{
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+#secondary-featurette form legend+label{
+    padding-left: 0 !important;
+}
+
+#secondary-featurette form img{
+    display: inline;
+    /* can use this property to change vertical position of an image or an inline element */
+    vertical-align: -3px;
+}
+
+#secondary-featurette form input[type="text"]{
+    width: 55px;
+    font-size: 10px;
+}
+
+#secondary-featurette form input[type="image"]{
+    padding-left: 13px;
+    vertical-align: -6px;
+}
+
+#secondary-featurette form fieldset{
+    margin: 10px 0;
+}
+
+#secondary-featurette form legend{
+    display: none;
+}
+
+#secondary-featurette select{
+    width: 200px;
+}
+
+#photos{
+    padding: 67px 0 0 27px;
+    min-height: 500px;
+}
+
+#photos h3{
+    margin-bottom: 18px;
+    color: #36332a;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+#photos a{
+    display: block;
+    float: left;
+    padding: 10px 5px 10px 15px;
+    width: 122px;
+    height: 121px;
+}
+
+#photos img{
+    padding: 13px 15px 15px 14px;
+}
+
+/* footer */
+#footer{
+    clear: left;
+    padding: 40px 0 0 60px;
+    min-height: 0;
+    color: #8a867c;
+    font-size: 10px;
+    text-align: center;
+}
+
+#footer p{
+    padding-bottom: 8px;
+}
+
+#footer-links{
+    margin-bottom: 10px;
+}
+
+#footer-links a{
+    padding: 0 10px;
+}
+
+#footer #cameron-moll{
+    margin: 20px auto 0;
+    width: 124px;
 }
 
 /* to clear fix, useful */
