@@ -1,0 +1,9 @@
+.hello{
+  font-size: 40px;
+  line-height: 100px;
+  border-radius: 6px;
+  background: url('./alipay.ico') no-repeat left center;
+  background-color: rgba(0, 0, 0, .5);
+  color: rgb(37, 5, 5);
+  text-align: center;
+}

@@ -290,10 +290,15 @@ transition-group相当于在每个元素上增加了一个transition包裹元素
 
 路由：根据url不同，返回给用户不同的内容
 router-view 显示当前路由对应的地址
+单页应用：跳转响应快速，但SEO比较差，而且首屏时间长
 
 6.4-6.6 部署开发环境，进行一系列初始化
 
-包括： reset  1pxborder  30msfastClick等
+移动端开发的重置：
+1. meta标签
+2. reset.css (初始化各个客户端，表现相同)
+3. border.css 移动端1像素问题(css像素：实际像素 = 1：x)
+4. click事件300ms延迟 (fastclick库) npm insall --save fastclick
 
 7.1 首页header区域
 

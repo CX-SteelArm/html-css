@@ -40,3 +40,9 @@
 ----------------
 
 		包含学习过程中的小demo(如demo11.html -- 简单todoList 和 demo14.html -- 使用简单动态组件实现的选项卡) 和笔记 (vue.md)
+
+./Webpack
+----------------
+
+    ./webpack-simple  webpack对amd、cmd及umd模块的打包原理
+    ./webpack-doc webpack文档上的代码，以及部分笔记
