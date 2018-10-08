@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo6 - Vue动画演示</title>
+    <style>
+
+    /* vue通过加入这几个类的形式添加过渡动画，用于元素的v-if="show"类型的隐而复现，或者现而复隐。执行完之后，这些类将被销毁，div恢复原本的状态 */
+        .chi-enter, .chi-leave-to{
+            opacity: 0;
+        }
+        .chi-enter-to, .chi-leave{
+            opacity: 1;
+        }
+        .chi-enter-active, .chi-leave-active{
+            transition: opacity 1s;
+        }
+        #root div{
+            background: cornflowerblue;
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+    <script src="vue.min.js"></script>
+</head>
+<body>
+    <div id="root">
+        <transition name="chi">
+            <div v-show="show">hello world</div>
+        </transition>
+        <button @click="change">Toggle</button>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#root",
+            data: {
+                show: true
+            },
+            methods: {
+                change: function(){
+                    this.show = !this.show
+                }
+            },
+        })
+    </script>
+</body>
+</html>

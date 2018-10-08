@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo4 - 非父子组件传值</title>
+    <script src="vue.min.js"></script>
+</head>
+<body>
+    <div id="root">
+        <child content="Dell"></child>
+        <child></child>
+    </div>
+    <script>
+        Vue.prototype.bus = new Vue()
+
+        Vue.component('child', {
+            template: "<div @click=clickMe>{{content}}</div>",
+            props: {
+                content: {
+                    type: String,
+                    default: "default"
+                }
+            },
+            methods: {
+                clickMe: function(){
+                    this.bus.$emit("change", this.content)
+                }
+            },
+            mounted: function(){
+                this.bus.$on("change", msg => {
+                    this.content = msg
+                })
+            }
+        })
+
+        var vm = new Vue({
+            el: "#root",
+
+        })
+    </script>
+</body>
+</html>

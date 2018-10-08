@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>img & 伪元素</title>
+  <style>
+    .wrapper{
+      height: 100px;
+      background: #c0ab48;
+
+    }
+    .content{
+      background: red;
+      line-height: 0;
+    }
+    .content:before{
+      display: inline-block;
+      content: '';
+      width: 200px;
+      height: 100px;
+      background-image: url(img/createProject.jpg);
+    }
+    .content:after{
+      content: url(data:image/gif;base64,R01GOD1hBQAFAIABAM0AAAAAACH5BAEAAAEALAAAAAAFAAUAAAIHRIB2eKuOCgA7);
+    }
+  </style>
+  <script>
+    class Node {
+      constructor (data, mount, next=null) {
+        this.data = data;
+        this.mount = mount;
+        this.next = next;
+      }
+      show () {
+        console.log(this.data, this.mount, this.next)
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="content">一些内容</div>
+  </div>
+</body>
+</html>

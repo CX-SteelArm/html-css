@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CORS跨域演示</title>
+</head>
+<body>
+  <div class="test"></div>
+  <script>
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        document.querySelector(".test").innerHTML = xmlhttp.responseText;
+      }
+    }
+    xmlhttp.open("GET", "http://127.0.0.1:3000", true);
+    xmlhttp.setRequestHeader('Origin', 'http://127.0.0.1:80');
+    xmlhttp.send(null);
+  </script>
+</body>
+</html>

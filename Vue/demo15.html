@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>slot demo</title>
+  <script type="text/javascript" src="vue.min.js"></script>
+</head>
+<body>
+  <div id="root">
+    <my-com :infos='infos'>
+      <template slot-scope="slotProps">
+        <button>{{ slotProps.info }}</button>
+      </template>
+    </my-com>
+  </div>
+
+  <script>
+    var myCom = {
+      props: ['infos'],
+      template: `
+        <ul>
+          <li v-for="info in infos">
+            target:
+            <slot :info='info'>{{ info }}</slot>
+          </li>
+        </ul>
+      `,
+      computed: {
+        upInfo: function () {
+          return this.infos.forEach(String.prototype.toUpperCase)
+        }
+      }
+    }
+
+    var vm = new Vue({
+      el: '#root',
+      components: {myCom},
+      data: {
+        infos: ['did', 'does', 'done']
+      }
+    })
+  </script>
+</body>
+</html>

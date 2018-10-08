@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JSONP</title>
+</head>
+<body>
+  <script>
+    function runMe (bar) {
+      console.log(bar);
+    }
+  </script>
+  <script src="http://127.0.0.1:3000/jsonp?callback=runMe"></script>
+  <script src="http://127.0.0.1:3000/jsonp?rt=runMe"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Iframe</title>
+</head>
+<body>
+  <div>
+    这是iframe页面,接收到的内容：
+    <div class="receive"></div>
+  </div>
+  <script>
+    var receive = document.querySelector(".receive");
+    window.addEventListener('message', function (e) {
+      receive.innerHTML = e.data;
+    }, false)
+  </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo9 - 列表过渡</title>
+    <style>
+    /* transition-group相当于在每个元素上增加了一个transition包裹元素 */
+        .chi-enter, .chi-leave-to{
+            opacity: 0;
+        }
+        .chi-enter-active, .chi-leave-active{
+            transition: opacity 2s;
+        }
+    </style>
+    <script src="vue.min.js"></script>
+</head>
+<body>
+    <div id="root">
+        <transition-group name="chi">
+            <!-- key值最好不用列表循环的index值，可以使用元素自定义的id值 -->
+            <div v-for="item of list" :key="item.id">{{item.content + " " + item.id}}</div>
+        </transition-group>
+        <button @click="addNewItem">Toggle</button>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#root",
+            data: {
+                count: 0,
+                list: [],
+            },
+            methods: {
+                addNewItem: function(){
+                    this.list.push({
+                        id: this.count ++,
+                        content: "Hello world",
+                    })
+                }
+            },
+        })
+    </script>
+</body>
+</html>

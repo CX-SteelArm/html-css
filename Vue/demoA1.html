@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Render函数</title>
+        <script src="vue.min.js"></script>
+    </head>
+    <body>
+        <div id="app2">
+            <!-- 组件使用者只需传递users数据即可 -->
+            <!-- <anchored-heading :message="testIdea"> -->
+                <!-- <div slot="san">san</div>
+                <div>sun</div>
+                <div>smg</div> -->
+                <!-- <template slot-scope="slotProps">
+                    <span>afsfsdfsfsf</span>
+                    {{slotProps.text}}
+                </template>
+            </anchored-heading> -->
+        </div>
+        <script>
+            Vue.component('anchored-heading', {
+                // 渲染不出slot="san"那一项
+                // render: function (createElement) {
+                //   // `<div><slot></slot></div>`
+                //   return createElement('div', this.$slots.default)
+                // }
+                props: ['message'],
+                render: function (createElement ) {
+                  // `<div><slot :text="message"></slot></div>`
+                  return createElement('div', [
+                    this.$scopedSlots.slotProps({
+                      text: 'I got the message: ' + this.message
+                    })
+                  ])
+                }
+            });
+            new Vue({
+                el: '#app2',
+                data: {
+                    users: [
+                        {id: 1, name: '张三', age: 20},
+                        {id: 2, name: '李四', age: 22},
+                        {id: 3, name: '王五', age: 27},
+                        {id: 4, name: '张龙', age: 27},
+                        {id: 5, name: '赵虎', age: 27}
+                    ],
+                    testIdea: 'I am a good idea'
+                },
+                render: function (createElement) {
+                  return createElement('div', [
+                    createElement('anchored-heading', {
+                      // pass `scopedSlots` in the data object
+                      // in the form of { name: props => VNode | Array<VNode> }
+                      scopedSlots: {
+                        slotProps: function (props) {
+                          return createElement('span', props.text)
+                        }
+                      }
+                    })
+                  ])
+                }
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo2 - 组件的ref和emit</title>
+    <script src="vue.min.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!-- 组件中的@xxx中xxx为接收到的信号 -->
+        <counter ref="one" @change11="handleChange"></counter>
+        <counter ref="two" @change11="handleChange"></counter>
+        <div>{{total}}</div>
+    </div>
+    
+
+    <script>
+        Vue.component('counter', {
+            // @click是绑定的click点击事件
+            template: "<div @click='handleClick'>{{number}}</div>",
+            data: function(){
+                return {
+                    number: 0
+                }
+            },
+            methods: {
+                handleClick: function(){
+                    this.number ++
+
+            // 使用this.$emit函数
+                    this.$emit('change11')
+                }
+            }
+        })
+
+        var vm = new Vue({
+            el: "#root",
+            data: {
+                total: 0
+            },
+            methods: {
+                handleChange: function(){
+            // this.$refs表示所有的引用记录
+                    this.total = this.$refs.one.number + this.$refs.two.number;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

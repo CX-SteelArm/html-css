@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PostMessage</title>
+  <style>
+    body{
+      padding-top: 155px;
+    }
+    iframe{
+      position: absolute;
+      top: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- 实现简单的PostMessage消息传输 -->
+  <div>
+    <label for="in">In:</label>
+    <input type="text" name="in" placeholder="请输入一些信息">
+    <button onclick="change()">变更</button>
+  </div>
+  <script>
+    var iframe = undefined;
+    var input = document.querySelector("input");
+
+    var targetOrigin = "*";
+    createNewFrame();
+    
+    function change() {
+      createNewFrame();
+    }
+
+    function createNewFrame () {
+      if (iframe) {
+        iframe.onload = null;
+        document.body.removeChild(iframe);
+        iframe = undefined;
+      }
+      var newframe = document.createElement('iframe');
+      newframe.src = "http://127.0.0.1:3000/iframe";
+      iframe = newframe;
+      iframe.onload = function() {
+        iframe.contentWindow.postMessage(input.value, targetOrigin);
+      }
+      document.body.appendChild(iframe);
+      
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>几种方法垂直水平居中</title>
+  <style>
+    .wrapper{
+      width: 500px;
+      height: 300px;
+      background: red;
+      margin-bottom: 100px;
+    }
+    .child{
+      width: 180px;
+      height: 80px;
+      background: blue;
+    }
+
+    /* one */
+    .wrapper-one{
+      position: relative;
+    }
+    .one{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    
+    /* two */
+    .wrapper-two{
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      border:1px solid #666;
+    }
+    .two{
+      /* display不能是inline或者block */
+      display: inline-block;
+    }
+
+    /* three */
+    .wrapper-three{
+      position: relative;
+    }
+
+    .three{
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      /* 必须写下面这一句 */
+      margin: auto;
+    }
+
+    /* four */
+    .wrapper-four{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .four{
+      
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper wrapper-one">
+    <div class="child one"></div>
+  </div>
+
+  <div class="wrapper wrapper-two">
+    <div class="two child"></div>
+  </div>
+
+  <div class="wrapper wrapper-three">
+    <div class="child three"></div>
+  </div>
+
+  <div class="wrapper wrapper-four">
+    <div class="child four"></div>
+  </div>
+</body>
+</html>

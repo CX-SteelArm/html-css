@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo3 - 父子组件传值</title>
+    <script src="vue.min.js"></script>
+</head>
+<body>
+    <div id="root">
+        <comtent :cont="2" @increase="incData"></comtent>
+        <comtent :cont="3" @increase="incData"></comtent>
+        <div>{{total}}</div>
+    </div>
+
+    <script>
+        var comtent = {
+            props: ['cont'],
+            // 插值表达式中不用this. 外面可以使用this.
+            template: '<div @click="changeNum">{{number}}</div>',
+            // 子组件不要更改父组件传过来的值，可以用一个新变量接受
+            data: function(){
+                return {
+                    number: this.cont
+                }
+            },
+            methods: {
+                changeNum: function(){
+                    this.number ++
+                    // emit传入的第二个及以后的参数可以被接收
+                    this.$emit("increase", 1)
+                }
+            }
+        };
+
+        var vm = new Vue({
+            el: "#root",
+            // 不要忘记注册组件
+            components: {
+                comtent: comtent,
+            },
+            data: {
+                total: 5
+            },
+            methods: {
+                incData: function(inc){
+                    this.total += inc
+                }
+            }
+        })
+    </script>
+</body>
+</html>

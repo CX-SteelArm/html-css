@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Window.name跨域实现</title>
+</head>
+<body>
+  <iframe src="http://127.0.0.1:3000/domainB" frameborder="1" style="display:none;"></iframe>
+  <script>
+    var iframe = document.querySelector('iframe');
+    var flag = 0;
+    iframe.onload = function() {
+      if (flag == 0) {
+        this.src = "./vain.html";
+        flag = 1;
+      } else {
+        // 这种方法存在的问题：刷新页面则无效
+        console.log(this.contentWindow.name);
+        // 加上这一句之后就可以，刷新页面也有效
+        document.body.removeChild(this);
+      }  
+    }
+  </script>
+</body>
+</html>

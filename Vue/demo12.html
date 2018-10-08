@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>select和value的组合</title>
+  <script src="vue.min.js"></script>
+</head>
+<body>
+  <div id="root">
+    <select v-model="selected" multiple>
+      <option v-for="option of options" :value="option.value">{{option.text}}</option>
+    </select>
+    <span>{{selected}}</span>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: "#root",
+      data: {
+        selected: '',
+        options: [
+          {
+            id: 1,
+            text: 'one',
+            value: 'a'
+          },
+          {
+            id: 2,
+            text: 'two',
+            value: 'b'
+          }
+        ]
+      }
+    })
+
+  </script>
+</body>
+</html>

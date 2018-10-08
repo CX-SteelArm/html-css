@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Todo List</title>
+  <script src="vue.min.js"></script>
+</head>
+<body>
+  <div id="todo-example">
+    <form @submit.prevent="addNewTodo">
+      <label for="message">Do something:</label>
+      <input type="text" name="message"
+        v-model="newTodoNext"
+        id="new-todo"
+        placeholder="feed a cat" 
+      >
+      <button>Add</button>
+    </form>
+    <ul>
+      <li
+        is="todo-list"
+        v-for="(todo,index) in todos"
+        :key="todo.id"
+        :title="todo.title"
+        @remove="removeItem(index)"
+      ></li>
+    </ul>
+  </div>
+  
+  <script>
+    var todoList = {
+      props: ['title'],
+      template: `<li>
+        {{title}}
+        <button @click='$emit("remove")'>Del</button>
+      </li>`
+    }
+
+    var vm = new Vue({
+      el: '#todo-example',
+      components: {
+        "todo-list": todoList
+      },
+      data: {
+        newTodoNext: '',
+        todos: [
+        {
+          id: 1,
+          title: 'drink tea'
+        },
+        {
+          id: 2,
+          title: 'feed dog'
+        },
+        {
+          id: 3,
+          title: 'wash dishes'
+        }],
+        nextItemId: 4
+      },
+      methods: {
+        addNewTodo () {
+          this.todos.push({
+            id: ++this.nextItemId,
+            title: this.newTodoNext
+          })
+          this.newTodoNext = ''
+        },
+        removeItem (id) {
+          this.todos.splice(id, 1);
+        }
+      }
+    })
+  </script>
+</body>
+</html>

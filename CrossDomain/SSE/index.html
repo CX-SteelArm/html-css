@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SSE</title>
+</head>
+<body>
+  <script>
+    var es = new EventSource('http://127.0.0.1:3000');
+    es.onopen = function(e) {
+      console.log("Connection Start");
+      console.log(this.readyState);
+    }
+    es.onmessage = function(e) {
+      var node = document.createTextNode(e.data);
+      document.body.appendChild(node);
+    }
+  </script>
+</body>
+</html>

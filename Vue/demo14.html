@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>动态组件demo</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      list-style: none;
+    }
+  </style>
+  <script src="vue.min.js"></script>
+</head>
+<body>
+  <div id="root" style="width: 400px; margin: 5px;">
+
+    <tab-controler :controls="controls" @change-item="changeTab">
+    </tab-controler>
+    
+    <keep-alive>
+      <component
+        :is="currentTabComponent"
+        :info="info"
+        style="width: 100%; min-height: 50px; border: 1px solid gray; position: relative; top: -1px;"
+      ></component>
+    </keep-alive>
+
+  </div>
+
+  <script>
+    var tabControler = {
+      props: ['controls'],
+      template: `
+        <ul style="overflow: hidden">
+          <li v-for="item in controls" style="float: left; padding: 8px; border: 1px solid gray; border-radius: 5px 5px 0 0;" >
+            <span @click="$emit('change-item', item)">{{item}}</span>
+          </li>
+        </ul>
+      `
+    }
+
+    var archive = {
+      props: ['info'],
+      template: `<div>{{ info.archive }}</div>`,
+    }
+
+    var posts = {
+      props: ['info'],
+      data: function () {
+        return {
+          currentTabIndex: 0
+        }
+      },
+      computed: {
+        currentInfo: function () { 
+          return this.info.posts[this.currentTabIndex]
+        }
+      },
+      template: `
+        <div style="padding: 5px; overflow: hidden;">
+          <ul style="float: left; min-width: 100px">
+            <li v-for="(p,i) in info.posts" @click="changeTab(i)" style="background: gray; padding: 3px 2px; margin: 4px 8px;">{{p.title}}</li>
+          </ul>
+          <div style="overflow: hidden; border-left: 1px solid gray; padding-left: 5px;">
+            <h3>{{currentInfo.title}}</h3>
+            <p>{{currentInfo.info}}</p>
+          </div>
+        </div>
+      `,
+      methods: {
+        changeTab: function (i) {
+          this.currentTabIndex = i
+        }
+      }
+    }
+
+    var vm = new Vue({
+      el: "#root",
+      components: {tabControler, archive, posts},
+      data: {
+        controls: ['posts', 'archive'],
+        info: {
+          archive: 'archive component',
+          posts: [
+          {
+            title: 'Cat Ipsum',
+            info: 'do dee dos dis def'
+          },
+          {
+            title: 'Hipster Ipsum',
+            info: 'I ------------- I ------------ I'
+          }
+          ],
+        },
+        currentTabComponent: 'posts'
+      },
+      methods: {
+        changeTab: function (s) {
+          this.currentTabComponent = s.toLowerCase()
+        }
+      }
+    })
+  </script>
+</body>
+</html>

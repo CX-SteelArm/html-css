@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>伪元素</title>
+  <style>
+    .wrapper{
+      height: 100px;
+      background: #c0ab48;
+    }
+    .content{
+      background: red;
+    }
+    .content:before{
+      display: block;
+      content: '';
+      width: 100%;
+      height: 3px;
+      background: blue;
+    }
+  </style>
+  <script>
+    class Node {
+      constructor (data, mount, next=null) {
+        this.data = data;
+        this.mount = mount;
+        this.next = next;
+      }
+      show () {
+        console.log(this.data, this.mount, this.next)
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="content">一些内容</div>
+  </div>
+</body>
+</html>

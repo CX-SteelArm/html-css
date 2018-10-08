@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Float</title>
+  <style>
+    .father{
+      padding: 20px;
+      line-height: 50px;
+      font-size: 20px;
+      background: cornflowerblue;
+    }
+    span{
+      float: left;
+      line-height: 30px;
+    }
+    span:before{
+      content: "c";
+    }
+    span:after{
+      content: "d";
+    }
+    .fa2{
+      line-height: 50px;
+      background: rebeccapurple;
+      font-size: 24px;
+      color: white;
+    }
+    .fa2 div:before{
+      content: "c";
+      float: left;
+    }
+    .fa2 div:after{
+      content: "d";
+      float: right;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Float之后元素有几个特征：
+  1.块状化-block，可以改变元素大小；
+  2.采用未float之前的大小； -->
+  <div class="father">
+    XxxX<span>xxx</span>XxxxX
+  </div>
+  <div class="fa2">
+    <div>xxx</div>
+  </div>
+</body>
+</html>

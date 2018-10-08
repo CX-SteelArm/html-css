@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Component and v-model</title>
+  <script src="vue.min.js"></script>
+</head>
+<body>
+  <!-- v-model === v-bind:value='text' & v-on:input='text = $event.target.value' -->
+  <!-- 注意组件调用者的input绑定的input由组件触发 -->
+  <!-- 注意组件通过$emit('enent', somevalue)的方式向调用者传入值(这个值为$event，和组件调用者的$event不是一个东西) -->
+  <!-- 注意template中只会渲染第一个子级元素 -->
+  <!-- 可以简单理解为调用者和组件不是一个层次上的东西，最终和dom元素平级的是组件而不是调用者 -->
+  <div id="root">
+    <bind-input
+      v-model="text"
+    >
+    </bind-input>
+  </div>
+  <script>
+    var bindInput = {
+      props: ['value'],
+      template: `
+        <div>
+          <label>input something:</label>
+          <input
+            :value='value'
+            @input="$emit('input', $event.target.value)"
+          >
+          {{value}}
+        </div>
+      `
+    }
+
+    var vm = new Vue({
+      el: "#root",
+      components: {
+        'bind-input': bindInput
+      },
+      data: {
+        text: '25'
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>line-height vertical-align font-size的关系</title>
+    <style>
+        body{
+            font-size: 20px;
+        }
+        div{
+            background: black;
+            font-size: 0px;
+            /* line-height: 15px; */
+        }
+        img{
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+        }
+        /* span{
+            background: cornflowerblue;
+        } */
+    </style>
+</head>
+<body>
+    <div><img /></div>
+    <p>
+        vertical-align: inline和inline-block元素都有top-line, middle-line, base-line和bottom-line, 这个属性定义在div中，其内部的所有行内框的这些线属性对齐，并撑开div
+    </p>
+    <p>
+        line-height: div属性，如果未定义，约等于font-size，真正撑开父容器的
+    </p>
+    <p>
+        font-size: 影响line-height的默认值, 
+    </p>
+</body>
+</html>

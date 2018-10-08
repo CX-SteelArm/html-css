@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo7 - Vue关键帧动画</title>
+    <style>
+        @keyframes shake {
+            0%{
+                transform: scale(0);
+            }
+            50%{
+                transform: scale(1.5);
+            }
+            100%{
+                transform: scale(1);
+            }
+        }
+
+        .chi-enter-active{
+            animation: shake 3s;
+        }
+
+        .chi-leave-active{
+            animation: shake 3s reverse;            
+        }
+
+        #root div{
+            background: cornflowerblue;
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+    <script src="vue.min.js"></script>
+</head>
+<body>
+    <div id="root">
+        <transition name="chi">
+            <div v-show="show">hello world</div>
+        </transition>
+        <button @click="change">Toggle</button>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#root",
+            data: {
+                show: true
+            },
+            methods: {
+                change: function(){
+                    this.show = !this.show
+                }
+            },
+        })
+    </script>
+</body>
+</html>

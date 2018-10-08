@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Note6</title>
+  <style>
+    html, body{
+      margin: 0;
+      padding: 0;
+    }
+    .add{
+      width: 0;
+      height: 0;
+      position: relative;
+      margin-left: 30px;
+      margin-top: 30px;
+    }
+    .add:before{
+      content: '';
+      width: 30px;
+      height: 5px;
+      position: absolute;
+      left: -12.5px;
+    }
+    .add:after{
+      content: '';
+      width: 5px;
+      height: 30px;
+      position: absolute;
+      top: -12.5px;
+    }
+    .add:before, .add:after{
+      background: cornflowerblue;
+    }
+  </style>
+</head>
+<body>
+  <div class="add"></div>
+  <script>
+    let count = 1
+    let foo
+    for (let i=0; i<20; i++) {
+      if (foo) {
+        clearTimeout(foo)
+      }
+      foo = setTimeout(() => {console.log(count ++)}
+      , 600)
+    }
+    
+  </script>
+</body>
+</html>
