@@ -2,7 +2,7 @@
 
 ### 起步
 
-- 使用webpack
+使用webpack
 
     使用webpack之前安装：
     > npm init -y
@@ -10,7 +10,7 @@
 
     源文件置于"/src"目录下,另加"/dist"目录作为输出文件的目录,入口js文件为"index.js",输出缺省为"main.js",这应该是webpack默认的配置
 
-- 添加配置文件webpack.config.js
+添加配置文件webpack.config.js
 
     // 配置文件使用的是commonJS规范
     const path = require('path');
@@ -22,7 +22,7 @@
         }
     }
 
-- entry 和 output
+entry 和 output
 
     entry可以是一个字符串、一个数组或一个对象
     entry: ['./example1.js', './example1.js']
@@ -58,12 +58,12 @@
 
 ### 管理资源
 
-- webpack特征
+webpack特征
 
     1. 像 webpack 这样的工具，将动态打包(dynamically bundle)所有依赖项（创建所谓的依赖图(dependency graph)）。这是极好的创举，因为现在每个模块都可以_明确表述它自身的依赖，我们将避免打包未使用的模块。
     2. webpack 最出色的功能之一就是，除了 JavaScript，还可以通过 loader 引入任何其他类型的文件。也就是说，以上列出的那些 JavaScript 的优点（例如显式依赖），同样可以用来构建网站或 web 应用程序中的所有非 JavaScript 内容。
 
-- loader
+loader
 
     webpack其实只能处理js文件，对于其他文件只有先经过处理，再require进来。从本质上，loader也是插件，但是webpack提供了plugin插件，二者仍是独立概念。
 
@@ -90,7 +90,7 @@
 
 ### 管理输出
 
-- plugin
+plugin
 
     1. 插件是 webpack 的支柱功能。webpack 自身也是构建于你在 webpack 配置中用到的相同的插件系统之上！
     插件目的在于解决 loader 无法实现的其他事。
@@ -108,7 +108,7 @@
     }
     最后输出的bundle.js中不包含plugin的内容，可见其应该是编译的中间件，并不会像loader一样嵌入到打包后的文件中。
 
-- manifest
+manifest
 
 官方文档
 
@@ -121,7 +121,7 @@
 
 ### 开发
 
-- sourcemap
+sourcemap
 
     用于调试，提示和追踪错误
     引入方式:
@@ -147,12 +147,12 @@
 
     3. 在生产环境中启用 source map，因为它们对调试源码(debug)和运行基准测试(benchmark tests)很有帮助。避免在生产中使用 inline-*** 和 eval-***，因为它们可以增加 bundle 大小，并降低整体性能。 
 
-- watch
+watch
 
     > webpack --watch 可以进入观察模式
     观察模式生成的index.html不会自动更新
 
-- webpack-dev-server
+webpack-dev-server
 
     > npm i -g webpack-dev-server
     > webpack-dev-server --open 在8080端口创建服务器，运行后会自动打开浏览器
@@ -203,18 +203,18 @@ index.js 的修改
 新的 webpack 4 正式版本，扩展了这个检测能力，通过 package.json 的 "sideEffects" 属性作为标记，向 compiler 提供提示，表明项目中的哪些文件是 "pure(纯的 ES2015 模块)"，由此可以安全地删除文件中未使用的部分。
 你可以将应用程序想象成一棵树。绿色表示实际用到的源码和 library，是树上活的树叶。灰色表示无用的代码，是秋天树上枯萎的树叶。为了除去死去的树叶，你必须摇动(shake)这棵树(tree)，使它们落下。
 
-- tree shaking
+tree shaking
 
     > package.json
     "sideEffects": false
     生成的bundle.js总不包含未使用的模块
     Tree shaking会受到各种插件的影响
 
-- mode 
+mode 
 
     mode = development/production(default)/none
 
-- uglify
+uglify
 
     const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
     plugins: [
@@ -224,7 +224,7 @@ index.js 的修改
 
 ### 生产环境构建
 
-- 配置
+配置
 
     可以将不同类的配置分开写,例如
     > webpack.common.js 包含entry, output, module, plugins
@@ -232,7 +232,7 @@ index.js 的修改
     > webpack.pord.js 包含生产环境的plugins
     相应的script配置中应加入 --config webpack.xxx.js
 
-- 指定环境
+指定环境
 
     制定特定的环境
     > webpack.config.js
@@ -257,12 +257,12 @@ index.js 的修改
 
 代码分离是 webpack 中最引人注目的特性之一。此特性能够把代码分离到不同的 bundle 中，然后可以按需加载或并行加载这些文件。
 
-- 入口起点
+入口起点
 
     设置多个entry和output以满足多对多的输出，但是存在模块重复问题，借助CommonChunksPlugin来分离和去重。
     注意：文档中的方法已失效。
 
-- 动态导入
+动态导入
 
     使用ES2015规范定义的import()动态导入语法
 
@@ -281,17 +281,17 @@ index.js 的修改
     注意需要在output中加入类似 chunkFilename: '[name].chunk.js' 的配置
     使用ES2016 async/await 语法可以简化操作
 
-- bundle分析
+bundle分析
 
 ### 懒加载
 
 懒加载或者按需加载，是一种很好的优化网页或应用的方式。这种方式实际上是先把你的代码在一些逻辑断点处分离开，然后在一些代码块中完成某些操作后，立即引用或即将引用另外一些新的代码块。这样加快了应用的初始加载速度，减轻了它的总体体积，因为某些代码块可能永远不会被加载。
 
-将import()放在button.onclick = function (e) {
-    import(/* webpackChunkName: "my-chunk-name" */ 'module').then(function () {
-        <!-- do sth. -->
-    })
-}
+    将import()放在button.onclick = function (e) {
+        import(/* webpackChunkName: "my-chunk-name" */ 'module').then(function () {
+            <!-- do sth. -->
+        })
+    }
 
 ### Shimming
 
